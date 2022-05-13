@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post, Param} from '@nestjs/common';
+import {Body, Controller, Get, Post, Param, Patch} from '@nestjs/common';
 import {TodosService} from "./todos.service";
 import {createTodoDto} from "./dto/create-todo.dto";
 
@@ -15,10 +15,15 @@ export class TodosController {
     @Get()
     findAll(): any[] {
         return this.todosService.findAll();
+        return this.todosService.findAll();
     }
     @Post()
     createTodo(@Body() newTodo) {
         console.log("newTodo", createTodoDto);
         this.todosService.create(newTodo);
+    }
+    @Patch(':id')
+    updateTodo(@Param('id') id: string, @Body() todo: createTodoDto) {
+        return this.todosService.update(id, todo);
     }
 }
