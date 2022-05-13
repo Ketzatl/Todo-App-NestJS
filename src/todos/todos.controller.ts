@@ -12,6 +12,7 @@ export class TodosController {
     }
     @Post()
     createTodo(@Body() newTodo) {
-
+        console.log("newTodo", newTodo);
+        this.todosService.create(newTodo);
     }
 }
