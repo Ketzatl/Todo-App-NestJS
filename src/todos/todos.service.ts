@@ -55,4 +55,12 @@ export class TodosService {
         this.todos = [...updatedTodos];
         return { updatedTodo: 1, todo: todoToUpdate };
     }
+    deleteTodo(id: string) {
+        const todoToDelete = this.todos.find(t => t.id === +id);
+        if(!todoToDelete) {
+            return new NotFoundException("todo doesn't exist...")
+        }
+        this.todos = this.todos.filter(t => t.id !== +id);
+        return { deletedTodo: 1, todo: todoToDelete };
+    }
 }
