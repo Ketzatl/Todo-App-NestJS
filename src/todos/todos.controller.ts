@@ -26,8 +26,12 @@ export class TodosController {
     updateTodo(@Param('id') id: string, @Body() todo: createTodoDto) {
         return this.todosService.update(id, todo);
     }
+<<<<<<< Updated upstream
     @Delete(':id')
     deleteTodo(@Param('id') id: string) {
         return this.todosService.deleteTodo(id);
     }
+=======
+
+>>>>>>> Stashed changes
 }
